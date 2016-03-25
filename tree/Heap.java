@@ -1,4 +1,4 @@
-public class Heap
+public class Heap 
 {
 	Node[] array;
 	int count;
@@ -9,9 +9,9 @@ public class Heap
 		count = 0;
 	}
 
-	public void push(int weight, Object item)
+	public void push(Comparable item)
 	{
-		array[count] = new Node(weight, item);
+		array[count] = new Node(item);
 		updateUp(count);
 		count++;	
 	}
@@ -22,7 +22,7 @@ public class Heap
 			return;
 		
 		int father = (now - 1) / 2;
-		if (array[father].weight > array[now].weight)
+		if (array[father].item.compareTo(array[now].item) < 0)
 		{
 			swap(father, now);
 			updateUp(father);
@@ -49,7 +49,7 @@ public class Heap
 			return;
 		if (right >= count)
 		{
-			if (array[now].weight > array[left].weight)
+			if (array[now].item.compareTo(array[left].item) < 0)
 			{
 				swap(now, left);
 				updateDown(left);
@@ -57,8 +57,8 @@ public class Heap
 			return;
 		}
 
-		int next = array[left].weight < array[right].weight ? left : right;
-		if (array[now].weight > array[next].weight)
+		int next = (array[left].item.compareTo(array[right].item) >= 0) ? left : right;
+		if (array[now].item.compareTo(array[next].item) < 0)
 		{
 			swap(now, next);
 			updateDown(next);

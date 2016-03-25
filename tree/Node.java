@@ -1,12 +1,9 @@
 public class Node
 {
-	int weight;
-	Object item;
+	Comparable item;
 
-	public Node(int weight, Object item)
+	public Node(Comparable item)
 	{
-		this.weight = weight;
 		this.item = item;
 	}
-
 }
